@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Create/Edit Post{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'blog/base.html' %}
+    
+    <div class="container">
+        <h1>{% block header %}Create/Edit Post{% endblock %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'post-list' %}">Back to Post List</a>
+    </div>
+</body>
+</html>

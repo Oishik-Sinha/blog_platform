@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header style="display: flex; flex-direction: row; justify-content: space-between; padding: 0px 20px;">
+        <h1>My Blogging Platform</h1>
+        <nav>
+            <ul style="display: flex; flex-direction: row; justify-content: space-between; gap: 2rem;">
+                <li><a href="{% url 'post-list' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <hr/>
+
+    <main style="margin-top: 3rem;">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    
+    <footer style="margin-top: 5rem;">
+        <hr/>
+        <p>&copy; {{ current_year }} My Blogging Platform</p>
+    </footer>
+</body>
+</html>
