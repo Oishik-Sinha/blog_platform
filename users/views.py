@@ -38,7 +38,7 @@ class LoginView(View):
 class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         auth_logout(request)
-        return redirect('login')
+        return render(request, 'auth/logout.html')
 
 def LandingPage(request):
     return render(request, 'auth/landing.html', {

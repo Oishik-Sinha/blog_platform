@@ -49,8 +49,8 @@ This is a Django-based blogging platform that allows users to create, read, upda
 
 - Access the blog at `http://127.0.0.1:8000/`
 - Use the authentication system to sign up, log in, and manage your profile.
-- Create, edit, and delete blog posts.
-- Comment on posts to engage with the content.
+- Create, edit, and delete blog posts. (Login required)
+- Comment on posts to engage with the blog.  (for comment on any post Login required)
 
 ## API Endpoints
 

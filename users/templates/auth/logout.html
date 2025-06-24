@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logged Out</title>
-</head>
-<body>
-    <h1>You have been logged out</h1>
-    <p>Thank you for visiting our blogging platform. You have successfully logged out.</p>
-    <a href="{% url 'login' %}">Log in again</a>
-</body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto text-center bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+    <h1 class="text-3xl font-semibold mb-4">You have been logged out</h1>
+    <p class="text-gray-600 mb-6">Thank you for visiting our blogging platform. You have successfully logged out.</p>
+    <a href="{% url 'login' %}" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm">Log in again</a>
+</div>
+{% endblock %}

@@ -1,15 +1,21 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>Blog Posts</h1>
-    <a href="{% url 'post-create' %}">Create New Post</a>
-    <ul>
-        {% for post in posts %}
-            <li>
-                <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a> by {{ post.author }} on {{ post.created_at }}
-            </li>
-        {% empty %}
-            <li>No posts available.</li>
-        {% endfor %}
-    </ul>
+<div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-semibold">Blog Posts</h1>
+    <a href="{% url 'post-create' %}" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm">Create New Post</a>
+</div>
+
+<div class="space-y-4">
+    {% for post in posts %}
+        <div class="bg-white p-4 rounded-xl shadow hover:shadow-md transition border border-gray-200">
+            <a href="{% url 'post-detail' post.pk %}" class="text-xl font-medium text-blue-600 hover:underline">{{ post.title }}</a>
+            <div class="text-sm text-gray-500 mt-1">
+                by {{ post.author }} &middot; {{ post.created_at|date:"F j, Y" }}
+            </div>
+        </div>
+    {% empty %}
+        <p class="text-gray-600">No posts available.</p>
+    {% endfor %}
+</div>
 {% endblock %}

@@ -3,37 +3,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Blog{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <header style="display: flex; flex-direction: row; justify-content: space-between; padding: 0px 20px;">
-        <h1>My Blogging Platform</h1>
-        <nav>
-            <ul style="display: flex; flex-direction: row; justify-content: space-between; gap: 2rem;">
-                <li><a href="{% url 'post-list' %}">Home</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
-    <hr/>
+<body class="bg-gray-50 text-gray-900 font-sans">
 
-    <main style="margin-top: 3rem;">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+            <h1 class="text-2xl font-semibold tracking-tight">My Blogging Platform</h1>
+            <nav>
+                <ul class="flex space-x-6 text-sm font-medium">
+                    <li><a href="{% url 'post-list' %}" class="hover:text-blue-600">Home</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}" class="hover:text-blue-600">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'signup' %}" class="hover:text-blue-600">Sign Up</a></li>
+                        <li><a href="{% url 'login' %}" class="hover:text-blue-600">Login</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <hr class="border-gray-200"/>
+
+    <main class="max-w-4xl mx-auto mt-10 px-4">
         {% block content %}
         {% endblock %}
     </main>
 
-    
-    <footer style="margin-top: 5rem;">
-        <hr/>
-        <p>&copy; {{ current_year }} My Blogging Platform</p>
+    <footer class="mt-20 text-center text-sm text-gray-500">
+        <hr class="my-8 border-gray-200"/>
+        <p>&copy; {{ current_year }} Oishik Blogging Platform</p>
     </footer>
+
 </body>
 </html>
